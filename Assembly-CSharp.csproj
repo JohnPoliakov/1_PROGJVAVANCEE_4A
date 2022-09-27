@@ -43,6 +43,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\InputController.cs" />
      <Compile Include="Assets\Scripts\BombScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\InputActions.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\MapGenerator.cs" />
