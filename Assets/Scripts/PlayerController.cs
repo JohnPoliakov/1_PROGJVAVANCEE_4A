@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private InputController _input;
 
     private Vector3 _playerMoveInput = Vector3.zero;
+    private Vector3 _playerBombInput = Vector3.zero;
 
     public PlayerType playerType;
     public GameObject bombPrefab;
@@ -32,10 +33,9 @@ public class PlayerController : MonoBehaviour
         _playerMoveInput = GetMoveInput();
         PlayerMove();
         _rigidbody.AddRelativeForce(_playerMoveInput, ForceMode.Force);
+
         
-        // SI TOUCHE BOMBE JOUEUR ALORS
-        // Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
-    }
+ }
 
     private Vector3 GetMoveInput()
     {
@@ -46,13 +46,28 @@ public class PlayerController : MonoBehaviour
             return new Vector3(_input.MoveInput2.x, 0.0f, _input.MoveInput2.y);
         }
     }
-    
+
     private void PlayerMove()
     {
         _playerMoveInput = (new Vector3(_playerMoveInput.x * _movementMultiplier * _rigidbody.mass,
             _playerMoveInput.y,
             _playerMoveInput.z * _movementMultiplier * _rigidbody.mass
         ));
+
+    }
+    
+    public void SpawnBomb()
+    {
+        if (playerType == PlayerType.PLAYER_1)
+        {
+            Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
+        }
+        else
+        {
+            Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
+
+        }
+
 
     }
     public enum PlayerType
