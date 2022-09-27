@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     GameObject PauseMenu;
     [SerializeField]
     GameObject canvas;
+    [SerializeField]
+    GameObject player_1;
+    [SerializeField]
+    GameObject player_2;
     public bool IsPause;
     private void Awake()
     {
@@ -43,9 +47,27 @@ public class GameManager : MonoBehaviour
 
         Camera.main.transform.position = new Vector3(MapGenerator.Instance.size.x / 2, MapGenerator.Instance.size.x, 0);
         
+        SpawnPlayers();
+        
         canvas.SetActive(false);
     }
-    
-    
 
+    void SpawnPlayers()
+    {
+        GameObject player = Instantiate(player_1, new Vector3(MapGenerator.Instance.spawns[0].x, 0, MapGenerator.Instance.spawns[0].y),
+            Quaternion.identity);
+        
+        player.GetComponent<PlayerController>().SetInputController(GetComponent<InputController>());
+        
+        player = Instantiate(player_2, new Vector3(MapGenerator.Instance.spawns[1].x, 0, MapGenerator.Instance.spawns[1].y),
+            Quaternion.identity);
+        
+        player.GetComponent<PlayerController>().SetInputController(GetComponent<InputController>());
+    }
+
+}
+
+public enum ENEMY_BEHAVIOUR
+{
+    
 }
