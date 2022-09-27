@@ -42,6 +42,14 @@ MonoBehaviour:
     m_Localized: Retour
     m_Metadata:
       m_Items: []
+  - m_Id: 336651899916288
+    m_Localized: Retourner au menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 336709269606400
+    m_Localized: "R\xE9sumer"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

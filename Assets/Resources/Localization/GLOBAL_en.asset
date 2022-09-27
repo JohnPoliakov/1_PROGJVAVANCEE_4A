@@ -42,6 +42,14 @@ MonoBehaviour:
     m_Localized: Back
     m_Metadata:
       m_Items: []
+  - m_Id: 336651899916288
+    m_Localized: Back to menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 336709269606400
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

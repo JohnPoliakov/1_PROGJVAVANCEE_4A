@@ -688,6 +688,9 @@
      <Reference Include="Unity.VSCode.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEditor.CacheServer">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
      </Reference>
@@ -699,6 +702,12 @@
      </Reference>
      <Reference Include="Unity.VisualStudio.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Addressables">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Localization">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -724,6 +733,9 @@
      <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.ResourceManager">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.VisualScripting.Flow">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
      </Reference>
@@ -745,17 +757,20 @@
      <Reference Include="Unity.PlasticSCM.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Services.Core">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.VisualScripting.Core">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
      </Reference>
      <Reference Include="Unity.EditorCoroutines.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Services.Core">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.ShaderGraph.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Localization.Editor">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Localization.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Services.Core.Analytics">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
@@ -772,6 +787,15 @@
      <Reference Include="Unity.Timeline.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.ScriptableBuildPipeline">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Addressables.Editor">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.TestTools.CodeCoverage.Editor">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
      </Reference>
@@ -780,30 +804,6 @@
      </Reference>
      <Reference Include="Unity.VisualScripting.State">
      <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Addressables">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Addressables.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.ResourceManager">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.ResourceManager.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.ScriptableBuildPipeline">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Addressables.Editor">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Addressables.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Localization.Editor">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Localization.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEditor.CacheServer">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Localization">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.Localization.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
-     <HintPath>C:\Users\jejar\Documents\GitHub\1_PROGJVAVANCEE_4A\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
