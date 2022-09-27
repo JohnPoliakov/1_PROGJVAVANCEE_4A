@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     [Header("Pause")]
     [SerializeField]
     GameObject PauseMenu;
+    [SerializeField]
+    GameObject canvas;
     public bool IsPause;
     private void Awake()
     {
@@ -33,6 +35,15 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
         }
         PauseMenu.SetActive(state);
+    }
+
+    public void StartGame()
+    {
+        MapGenerator.Instance.GeneratedMap();
+
+        Camera.main.transform.position = new Vector3(MapGenerator.Instance.size.x / 2, MapGenerator.Instance.size.x, 0);
+        
+        canvas.SetActive(false);
     }
     
     
