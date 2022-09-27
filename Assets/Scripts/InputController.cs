@@ -8,9 +8,6 @@ public class InputController : MonoBehaviour
         public Vector2 MoveInput { get; private set; } = Vector2.zero; 
         public Vector2 MoveInput2 { get; private set; } = Vector2.zero;
         
-        public void BombeInput { get; private set; } = Vector2.zero;
-        public void BombeInput2 { get; private set; } = Vector2.zero;
-        
         InputActions _input = null;
 
         private void OnEnable()
@@ -60,7 +57,12 @@ public class InputController : MonoBehaviour
         
         private void SetBomb(InputAction.CallbackContext ctx)
         {
+                GameObject.FindWithTag("Player_1").GetComponent<PlayerController>().SpawnBomb();
                 
+        }
+        private void SetBomb2(InputAction.CallbackContext ctx)
+        {
+                GameObject.FindWithTag("Player_2").GetComponent<PlayerController>().SpawnBomb();
         }
 }
 
