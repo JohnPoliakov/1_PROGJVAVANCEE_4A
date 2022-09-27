@@ -4,13 +4,15 @@ public class MapGenerator : MonoBehaviour
 {
 
     public Texture2D[] mapPatterns;
-    private CubeData[,] data;
+    public CubeData[,] data;
+    public CubeData[,] groundGrid;
+    public bool IsGenerated;
     public GameObject groundPrefab;
+    public static MapGenerator Instance;
 
-    private Vector2 LEFT_NEIGHBOUR = new Vector2(-1, 0);
-    private Vector2 RIGHT_NEIGHBOUR = new Vector2(1, 0);
-    private Vector2 UP_NEIGHBOUR = new Vector2(0, 1);
-    private Vector2 DOWN_NEIGHBOUR = new Vector2(0, -1);
+    
+
+
     
     private Vector2[] neighbours = new[]
     {
@@ -20,32 +22,28 @@ public class MapGenerator : MonoBehaviour
         new Vector2(0, -1),
     };
 
-    void Explode(int x, int y)
-    {
-        
-        for (int i = 1; i < 5; i++)
-        {
-
-            CubeData dat = data[Mathf.FloorToInt(i * LEFT_NEIGHBOUR.x), Mathf.FloorToInt(i * LEFT_NEIGHBOUR.y)];
-            
-            
-        }
-
-        Vector2 input;
-        
-        
-        
-        
-
-    }
+    
+    
     
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        
         Texture2D mapPattern = mapPatterns[Random.Range(0, mapPatterns.Length)];
 
         data = new CubeData[mapPattern.width, mapPattern.height];
+        groundGrid = new CubeData[mapPattern.width, mapPattern.height];
 
         GameObject ground = new GameObject();
+        ground.name = "Ground";
         ground.transform.position = Vector3.zero;
         ground.transform.SetParent(transform);
         
@@ -54,45 +52,57 @@ public class MapGenerator : MonoBehaviour
             for (int y = 0; y < mapPattern.height; y++)
             {
 
-                Instantiate(groundPrefab, new Vector3(x, -1, y), Quaternion.identity,
+                GameObject grass = Instantiate(groundPrefab, new Vector3(x, -1, y), Quaternion.identity,
                     ground.transform);
+                grass.name = "Grass";
 
-
-                if (isBedrock(mapPattern.GetPixel(x, y)) || isWall(mapPattern.GetPixel(x, y)))
+                GameObject go = null;
+                if (IsBedrock(mapPattern.GetPixel(x, y)) || IsWall(mapPattern.GetPixel(x, y)))
                 {
-                    GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    go = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     go.transform.position = new Vector3(x, 0, y);
                     go.transform.rotation = Quaternion.identity;
                     go.transform.SetParent(transform);
                     go.GetComponent<MeshRenderer>().material.color = mapPattern.GetPixel(x, y);
                 }
-
+                
+                groundGrid[x, y] = new CubeData()
+                {
+                    x = x,
+                    y = y,
+                    attachedGameObject = grass
+                };
+                
                 data[x, y] = new CubeData()
                 {
                     x = x,
                     y = y,
-                    type = isBedrock(mapPattern.GetPixel(x, y)) ? -1 : isWall(mapPattern.GetPixel(x, y)) ? 1 : 0
+                    type = IsBedrock(mapPattern.GetPixel(x, y)) ? -1 : IsWall(mapPattern.GetPixel(x, y)) ? 1 : 0,
+                    attachedGameObject = go
                 };
-                
+
             }
         }
+
+        IsGenerated = true;
     }
 
-    bool isBedrock(Color color)
+    bool IsBedrock(Color color)
     {
         return color.r == 0 && color.g == 0 &&  color.b == 0;
     }
     
-    bool isWall(Color color)
+    bool IsWall(Color color)
     {
         return color.r.Equals(1.0f) && color.g == 0 &&  color.b == 0;
     }
 
-    private struct CubeData
+    public struct CubeData
     {
         public int x;
         public int y;
         public int type;
+        public GameObject attachedGameObject;
 
         public void Hello()
         {
