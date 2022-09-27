@@ -118,7 +118,7 @@
             ],
             "bindings": [
                 {
-                    "name": "ZQSD",
+                    "name": "NumPad",
                     "id": "764f2049-86dd-4ffd-b492-80b1f45d6e0f",
                     "path": "2DVector",
                     "interactions": "",
@@ -173,9 +173,64 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Fleche",
+                    "id": "460793c5-fc2c-483e-a001-29be4aa9068f",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "72492e23-8287-40c8-8023-b9cef3adbc0c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "74eeb818-35f6-49ee-b63f-cd52a4e7d03d",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "64dcc6c9-2c83-4449-b9c9-a8b54ef2f4e5",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "d3d663a8-5eef-4a41-956c-d4cebcaca640",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "81fde589-5d02-453c-8b6a-4f50cbe164a4",
-                    "path": "<Keyboard>/numpad0",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
