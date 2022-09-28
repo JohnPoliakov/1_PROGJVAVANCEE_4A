@@ -10,9 +10,11 @@ public class BombScript : MonoBehaviour
     public List<GameObject> IngredientsSpreadList;
     private List<GameObject> IngredientsExplosion;
     private MapGenerator.CubeData[,] dataGroundMap;
-
+    
     private Vector3 currentPosition;
-    public int radiusExplosion = 2;
+    private int radiusExplosion = 6;
+    private int bombCooldown = 1;
+    
     
     private Vector2Int LEFT_NEIGHBOUR = new Vector2Int(-1, 0);
     private Vector2Int RIGHT_NEIGHBOUR = new Vector2Int(1, 0);
@@ -34,9 +36,7 @@ public class BombScript : MonoBehaviour
         bool leftBool = true;
         bool upBool = true;
         bool downBool = true;
-
         
-
         IngredientsExplosion = new List<GameObject>();
 
         for (int i = 1; i <= radiusExplosion; i++)
@@ -57,9 +57,8 @@ public class BombScript : MonoBehaviour
     {
         int xCoord = (int)(transform.position.x + 0.5f) + neighbour.x;
         int yCoord = (int)(transform.position.z + 0.5f) + neighbour.y;
-        
-        
-        
+
+
         if (dataTileMap[xCoord, yCoord].type == 1)
         {
             Destroy(dataTileMap[xCoord, yCoord].attachedGameObject);
@@ -94,7 +93,7 @@ public class BombScript : MonoBehaviour
     IEnumerator WaitCoroutine()
     {
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(bombCooldown);
         GetComponent<MeshRenderer>().enabled = false;
         
         Explode();
