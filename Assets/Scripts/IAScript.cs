@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class IAScript : MonoBehaviour
 {
-    public float movSpeed = 2f;
+    public float moveSpeed = 20f;
 
 
     private bool isWandering = false;
@@ -14,7 +14,10 @@ public class IAScript : MonoBehaviour
     private bool isWalkingRight = false;
     private bool isWalkingDown = false;
     private bool isWalkingUp = false;
-
+    private bool isBombing = false;
+    private bool CanDrop = false;
+    
+    public GameObject bombPrefab;
     Rigidbody rb;
 
 
@@ -30,31 +33,45 @@ public class IAScript : MonoBehaviour
         }
         if (isWalkingLeft == true)
         {
-            rb.AddRelativeForce(transform.right *  -movSpeed);
+            rb.AddRelativeForce(transform.right *  -moveSpeed);
         }
         if (isWalkingRight == true)
         {
-            rb.AddRelativeForce(transform.right *  movSpeed);
+            rb.AddRelativeForce(transform.right *  moveSpeed);
         }
         if (isWalkingDown == true)
         {
-            rb.AddRelativeForce(transform.forward *  -movSpeed);
+            rb.AddRelativeForce(transform.forward *  -moveSpeed);
             
         }
         if (isWalkingUp == true)
         {
-            rb.AddRelativeForce(transform.forward *  movSpeed);
+            rb.AddRelativeForce(transform.forward *  moveSpeed);
+        }
+        if (isBombing == true)
+        {
+            Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
+            isBombing = false;
         }
         
     }
     IEnumerator Wander()
     {
-        int walkTime = Random.Range(1, 3);
-        int walkwait = Random.Range(1, 3);
+        int walkTime = 1;
+        float walkwait = 0.5f;
         int walkDirection = Random.Range(1, 5);
+        
 
+        int bombwait = Random.Range(1, 5);
+        int bombDrop = Random.Range(1, 10);
+
+        if (bombDrop == 5)
+        {
+            CanDrop = true;
+        } 
+        
         isWandering = true;
-
+        
         yield return new WaitForSeconds(walkwait);
         if (walkDirection == 1)
         {
@@ -63,6 +80,12 @@ public class IAScript : MonoBehaviour
             isWalkingDown = false;
             isWalkingLeft = false;
             isWalkingRight = false;
+
+            if (CanDrop == true)
+            { 
+                isBombing = true;
+            }
+            
         }
         if (walkDirection == 2)
         {
@@ -71,6 +94,10 @@ public class IAScript : MonoBehaviour
             isWalkingUp = false;
             isWalkingLeft = false;
             isWalkingRight = false;
+            if (CanDrop == true)
+            { 
+                isBombing = true;
+            }
         }
         if (walkDirection == 3)
         {
@@ -79,6 +106,10 @@ public class IAScript : MonoBehaviour
             isWalkingDown = false;
             isWalkingUp = false;
             isWalkingRight = false;
+            if (CanDrop == true)
+            { 
+                isBombing = true;
+            }
         }
         if (walkDirection == 4)
         {
@@ -87,6 +118,10 @@ public class IAScript : MonoBehaviour
             isWalkingDown = false;
             isWalkingLeft = false;
             isWalkingUp = false;
+            if (CanDrop == true)
+            { 
+                isBombing = true;
+            }
         }
         isWandering = false;
     }
