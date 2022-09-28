@@ -12,6 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.2/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IAScript.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -67,7 +68,8 @@
       <workItem from="1664189470480" duration="1279000" />
       <workItem from="1664268453178" duration="10682000" />
       <workItem from="1664352058035" duration="9000" />
-      <workItem from="1664354838099" duration="618000" />
+      <workItem from="1664354838099" duration="8739000" />
+      <workItem from="1664372105166" duration="4548000" />
     </task>
     <servers />
   </component>
