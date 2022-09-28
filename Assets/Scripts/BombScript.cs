@@ -1,13 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class BombScript : MonoBehaviour
 {
     private MapGenerator.CubeData[,] dataTileMap;
-    
+    public List<GameObject> IngredientsSpreadList;
+    private List<GameObject> IngredientsExplosion;
+    private MapGenerator.CubeData[,] dataGroundMap;
+
     private Vector3 currentPosition;
     public int radiusExplosion = 2;
     
@@ -15,12 +18,14 @@ public class BombScript : MonoBehaviour
     private Vector2Int RIGHT_NEIGHBOUR = new Vector2Int(1, 0);
     private Vector2Int UP_NEIGHBOUR = new Vector2Int(0, 1);
     private Vector2Int DOWN_NEIGHBOUR = new Vector2Int(0, -1);
-    // Start is called before the first frame update
+
     void Start()
     {
         currentPosition = transform.position;
         
         dataTileMap = MapGenerator.Instance.data;
+
+        dataGroundMap = MapGenerator.Instance.groundGrid;
     }
 
     private void Explode()
@@ -29,7 +34,11 @@ public class BombScript : MonoBehaviour
         bool leftBool = true;
         bool upBool = true;
         bool downBool = true;
+
         
+
+        IngredientsExplosion = new List<GameObject>();
+
         for (int i = 1; i <= radiusExplosion; i++)
         {
             
@@ -56,6 +65,7 @@ public class BombScript : MonoBehaviour
             Destroy(dataTileMap[xCoord, yCoord].attachedGameObject);
             dataTileMap[xCoord, yCoord].type = 0;
             isOK = false;
+            StartCoroutine(waitExplode(xCoord, yCoord));
             return;
         }
         else if (dataTileMap[xCoord, yCoord].type == -1)
@@ -66,6 +76,9 @@ public class BombScript : MonoBehaviour
         else
         {
             //degats si joueur
+            
+
+            StartCoroutine(waitExplode(xCoord, yCoord));
         }
 
         isOK = true;
@@ -80,11 +93,21 @@ public class BombScript : MonoBehaviour
 
     IEnumerator WaitCoroutine()
     {
+        
         yield return new WaitForSeconds(3);
         GetComponent<MeshRenderer>().enabled = false;
         
         Explode();
         
+        
+    }
+
+    IEnumerator waitExplode(int xCoord, int yCoord)
+    {
+        GameObject ingredient = Instantiate(IngredientsSpreadList[Random.Range(0, IngredientsSpreadList.Count)], dataGroundMap[xCoord, yCoord].attachedGameObject.transform.GetChild(0));
+
+        yield return new WaitForSeconds(1);
+        Destroy(ingredient);
         Destroy(gameObject);
     }
 }

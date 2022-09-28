@@ -42,7 +42,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""id"": ""53f227f0-7279-4fa8-ba7d-53ef412c6eef"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": true
                 }
             ],
@@ -134,7 +134,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""id"": ""1d19192c-9cd5-406a-a971-d619b6fcaf4b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": true
                 }
             ],
@@ -253,6 +253,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""81fde589-5d02-453c-8b6a-4f50cbe164a4"",
                     ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bomb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f305552f-e480-4ca4-9bfa-6d8e7b7f0f7d"",
+                    ""path"": ""<Keyboard>/numpad0"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
