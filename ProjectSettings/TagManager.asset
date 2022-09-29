@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Player_1
   - Player_2
+  - Player_1
+  - IA_Random
   layers:
   - Default
   - TransparentFX

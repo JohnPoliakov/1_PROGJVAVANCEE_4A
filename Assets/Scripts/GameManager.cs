@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     GameObject player_1;
     [SerializeField]
     GameObject player_2;
+    [SerializeField]
+    GameObject IARandom;
     public bool IsPause;
     private void Awake()
     {
