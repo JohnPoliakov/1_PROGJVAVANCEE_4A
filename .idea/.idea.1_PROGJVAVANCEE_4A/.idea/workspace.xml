@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d33c7f38-e3cc-467d-a334-b9145965c721" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MCTS_algo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MCTS_algo.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.1_PROGJVAVANCEE_4A/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.1_PROGJVAVANCEE_4A/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BombScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BombScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/PLAYER_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/PLAYER_1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/PLAYER_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/PLAYER_2.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IAScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RandomScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IAScript.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RandomScript.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MCTS.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MCTS.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MCTS.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MCTS.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MCTS_algo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MCTS_algo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +83,7 @@
       <workItem from="1664352058035" duration="9000" />
       <workItem from="1664354838099" duration="618000" />
       <workItem from="1664355774815" duration="5456000" />
-      <workItem from="1664439252436" duration="11363000" />
+      <workItem from="1664439252436" duration="14638000" />
     </task>
     <servers />
   </component>

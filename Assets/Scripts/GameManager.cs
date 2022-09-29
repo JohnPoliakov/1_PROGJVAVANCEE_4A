@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("TA GUEULE LOUIST5RG56HUJ7I8OK67JUHY6GT5F4RD3ESDFGTHYJNUK?IL.OM/.IK?UJNYHTGRFEDSZQAED3R4FT5GY6HU7JI8O9");
+            InstantiateMCTS();
         }
         
     }
@@ -133,7 +133,20 @@ public class GameManager : MonoBehaviour
         player = Instantiate(player_2, new Vector3(MapGenerator.Instance.spawns[1].x, 0, MapGenerator.Instance.spawns[1].y),
             Quaternion.identity);
 
-        player.GetComponent<IAScript>().enabled = true;
+        player.GetComponent<RandomScript>().enabled = true;
+    }
+    
+    void InstantiateMCTS()
+    {
+        GameObject player = Instantiate(player_1, new Vector3(MapGenerator.Instance.spawns[0].x, 0, MapGenerator.Instance.spawns[0].y),
+            Quaternion.identity);
+        
+        player.GetComponent<PlayerController>().SetInputController(GetComponent<InputController>());
+            
+        player = Instantiate(player_2, new Vector3(MapGenerator.Instance.spawns[1].x, 0, MapGenerator.Instance.spawns[1].y),
+            Quaternion.identity);
+
+        player.GetComponent<MCTS>().enabled = true;
     }
     
     

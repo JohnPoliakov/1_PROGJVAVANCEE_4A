@@ -7,6 +7,9 @@ public class MCTS : MonoBehaviour
     public float moveSpeed = 20f;
     Rigidbody rb;
 
+    private float cooldown = 1.5f;
+    private float lastDecision;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -14,8 +17,14 @@ public class MCTS : MonoBehaviour
 
     private void Update()
     {
+        
+        if(Time.time < lastDecision)
+            return;
+
+        lastDecision = Time.time + cooldown; 
+        
         MCTS_Algo mcts = new MCTS_Algo(MapGenerator.Instance.data);
-            
+        
         mcts.Compute(GameObject.FindWithTag("Player_1").transform.position, transform.position);
 
         switch (mcts.ActionToPlay.GetActionType())
@@ -40,13 +49,13 @@ public class MCTS : MonoBehaviour
 
             case ActionType.MOVE_UP:
             {
-                rb.AddRelativeForce(transform.up * moveSpeed);
+                rb.AddRelativeForce(transform.forward * moveSpeed);
                 break;
             }
 
             case ActionType.MOVE_DOWN:
             {
-                rb.AddRelativeForce(transform.up * -moveSpeed);
+                rb.AddRelativeForce(transform.forward * -moveSpeed);
                 break;
             }
         }
