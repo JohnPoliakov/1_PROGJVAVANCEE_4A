@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     public PlayerType playerType;
     public GameObject bombPrefab;
+
+    private float fireRate = 4f;
+    private float nextFire;
     
     
     [Header("Movement")] [SerializeField] private float _movementMultiplier = 30.0f;
@@ -58,15 +61,22 @@ public class PlayerController : MonoBehaviour
     
     public void SpawnBomb()
     {
-        if (playerType == PlayerType.PLAYER_1)
+        if (Time.time > nextFire)
         {
-            Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
-        }
-        else
-        {
-            Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
+            if (playerType == PlayerType.PLAYER_1)
+            {
+                Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
+            }
+            else
+            {
+                Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
 
+            }
+
+            nextFire = Time.time + fireRate;
         }
+        
+        
 
 
     }
