@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
+        
+        
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -99,7 +101,8 @@ public class GameManager : MonoBehaviour
         
         player = Instantiate(player_2, new Vector3(MapGenerator.Instance.spawns[1].x, 0, MapGenerator.Instance.spawns[1].y),
             Quaternion.identity);
-        
+
+        player.GetComponent<PlayerController>().enabled = true;
         player.GetComponent<PlayerController>().SetInputController(GetComponent<InputController>());
     }
 
@@ -107,15 +110,32 @@ public class GameManager : MonoBehaviour
     {
         if (TypeGame.value == 0)
         {
-            Debug.Log("bcsiludvbsd");
             SpawnPlayers();
+        }
+        else if (TypeGame.value == 1)
+        {
+            InstantiateRandom();
         }
         else
         {
-            Debug.Log("Come Soon");
+            Debug.Log("TA GUEULE LOUIST5RG56HUJ7I8OK67JUHY6GT5F4RD3ESDFGTHYJNUK?IL.OM/.IK?UJNYHTGRFEDSZQAED3R4FT5GY6HU7JI8O9");
         }
         
     }
+
+    void InstantiateRandom()
+    {
+        GameObject player = Instantiate(player_1, new Vector3(MapGenerator.Instance.spawns[0].x, 0, MapGenerator.Instance.spawns[0].y),
+            Quaternion.identity);
+        
+        player.GetComponent<PlayerController>().SetInputController(GetComponent<InputController>());
+            
+        player = Instantiate(player_2, new Vector3(MapGenerator.Instance.spawns[1].x, 0, MapGenerator.Instance.spawns[1].y),
+            Quaternion.identity);
+
+        player.GetComponent<IAScript>().enabled = true;
+    }
+    
     
     public void SetResolution(int resolutionIndex)
     {
