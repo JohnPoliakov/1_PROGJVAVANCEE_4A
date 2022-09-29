@@ -99,16 +99,6 @@ public class BombScript : MonoBehaviour
     {
         int xCoord = (int)(transform.position.x + 0.5f) + neighbour.x;
         int yCoord = (int)(transform.position.z + 0.5f) + neighbour.y;
-
-
-        Debug.Log("xCoord = " + xCoord);
-        Debug.Log("yCoord = " + yCoord);
-
-        Debug.Log("xCoordPlayer1 = " + xCoordPlayer1);
-        Debug.Log("yCoordPlayer1 = " + yCoordPlayer1);
-        Debug.Log("xCoordPlayer2 = " + xCoordPlayer2);
-        Debug.Log("yCoordPlayer2 = " + yCoordPlayer2);
-        
         
         if (dataTileMap[xCoord, yCoord].type == 1)
         {
@@ -118,12 +108,12 @@ public class BombScript : MonoBehaviour
             StartCoroutine(waitExplode(xCoord, yCoord));
             return;
         }
-        else if (dataTileMap[xCoord, yCoord].type == -1)
+        if (dataTileMap[xCoord, yCoord].type == -1)
         {
             isOK = false;
             return;
         }
-        else if (xCoordPlayer1 == xCoord && yCoordPlayer1 == yCoord)
+        if (xCoordPlayer1 == xCoord && yCoordPlayer1 == yCoord)
         {
             Debug.Log("jhcbsuvebwsd");
             EndGame();
@@ -135,7 +125,7 @@ public class BombScript : MonoBehaviour
         }
             
 
-            StartCoroutine(waitExplode(xCoord, yCoord));
+        StartCoroutine(waitExplode(xCoord, yCoord));
         
 
         isOK = true;

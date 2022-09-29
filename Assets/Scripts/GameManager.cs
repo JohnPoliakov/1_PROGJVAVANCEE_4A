@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,8 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject IARandom;
     public bool IsPause;
+    public GameState GameState = GameState.MENU;
 
-    [SerializeField] 
+        [SerializeField] 
     private TMP_Dropdown TypeGame;
     
     public TMP_Dropdown ResolutionDropdown;
@@ -145,7 +145,9 @@ public class GameManager : MonoBehaviour
 
 }
 
-public enum ENEMY_BEHAVIOUR
+public enum GameState
 {
-     _n
+     MENU,
+     PAUSE,
+     RUNNING
 }

@@ -115,6 +115,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.009
   m_Center: {x: 0, y: 0.008057002, z: 0.000052399464}
+--- !u!114 &-3724990596516943624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337215176488311522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e155a71de1447dbf18e6a937721808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 7910145201009191472, guid: ef55fa84639979e4481aca8e0a289b26, type: 3}
+  moveSpeed: 20
 --- !u!114 &676476661902217574
 MonoBehaviour:
   m_ObjectHideFlags: 0

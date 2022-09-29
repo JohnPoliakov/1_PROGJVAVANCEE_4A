@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class IAScript : MonoBehaviour
+public class RandomScript : MonoBehaviour
 {
     public float moveSpeed = 20f;
 
