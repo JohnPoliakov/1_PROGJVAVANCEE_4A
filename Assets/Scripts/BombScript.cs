@@ -10,17 +10,15 @@ public class BombScript : MonoBehaviour
     public List<GameObject> IngredientsSpreadList;
     private List<GameObject> IngredientsExplosion;
     private MapGenerator.CubeData[,] dataGroundMap;
-<<<<<<< Updated upstream
-    
-=======
+
 
     private GameObject player1;
     private GameObject player2;
 
->>>>>>> Stashed changes
+
     private Vector3 currentPosition;
     private int radiusExplosion = 6;
-    private int bombCooldown = 1;
+    private int bombCooldown = 3;
     
     
     private Vector2Int LEFT_NEIGHBOUR = new Vector2Int(-1, 0);
@@ -34,6 +32,7 @@ public class BombScript : MonoBehaviour
     private int yCoordPlayer2;
     
 
+    //
     void Start()
     {
         currentPosition = transform.position;
@@ -51,10 +50,10 @@ public class BombScript : MonoBehaviour
         bool leftBool = true;
         bool upBool = true;
         bool downBool = true;
-<<<<<<< Updated upstream
+
         
         IngredientsExplosion = new List<GameObject>();
-=======
+
 
         player1 = GameObject.FindWithTag("Player_1");
         player2 = GameObject.FindWithTag("Player_2");
@@ -81,7 +80,6 @@ public class BombScript : MonoBehaviour
             IngredientsExplosion = new List<GameObject>();
 
         }
->>>>>>> Stashed changes
 
         for (int i = 1; i <= radiusExplosion; i++)
         {
@@ -102,9 +100,7 @@ public class BombScript : MonoBehaviour
         int xCoord = (int)(transform.position.x + 0.5f) + neighbour.x;
         int yCoord = (int)(transform.position.z + 0.5f) + neighbour.y;
 
-<<<<<<< Updated upstream
 
-=======
         Debug.Log("xCoord = " + xCoord);
         Debug.Log("yCoord = " + yCoord);
 
@@ -114,7 +110,6 @@ public class BombScript : MonoBehaviour
         Debug.Log("yCoordPlayer2 = " + yCoordPlayer2);
         
         
->>>>>>> Stashed changes
         if (dataTileMap[xCoord, yCoord].type == 1)
         {
             Destroy(dataTileMap[xCoord, yCoord].attachedGameObject);
