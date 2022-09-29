@@ -130,7 +130,7 @@ MonoBehaviour:
   playerType: 1
   bombPrefab: {fileID: 7910145201009191472, guid: ef55fa84639979e4481aca8e0a289b26, type: 3}
   _movementMultiplier: 10
---- !u!114 &3499049791716326939
+--- !u!114 &7610244424754290318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2337215176488311522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4ed3e18c3783b4bbd2f37f87d3658c, type: 3}
+  m_Script: {fileID: 11500000, guid: 361ab28c61874a9d94aedc6cb57407eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20

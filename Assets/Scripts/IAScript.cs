@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,19 +53,17 @@ public class IAScript : MonoBehaviour
             Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
             isBombing = false;
         }
-        
+
     }
     IEnumerator Wander()
     {
         int walkTime = 1;
         float walkwait = 0.5f;
-        int walkDirection = Random.Range(1, 5);
-        
+        MoveDirection direction = (MoveDirection) Enum.GetValues(typeof(MoveDirection)).GetValue(Random.Range(0, 4));
 
-        int bombwait = Random.Range(1, 5);
-        int bombDrop = Random.Range(1, 10);
+        int bombDrop = Random.Range(1, 100);
 
-        if (bombDrop == 5)
+        if (bombDrop <= 5)
         {
             CanDrop = true;
         } 
@@ -73,56 +71,79 @@ public class IAScript : MonoBehaviour
         isWandering = true;
         
         yield return new WaitForSeconds(walkwait);
-        if (walkDirection == 1)
-        {
-            isWalkingUp = true;
-            yield return new WaitForSeconds(walkTime);
-            isWalkingDown = false;
-            isWalkingLeft = false;
-            isWalkingRight = false;
 
-            if (CanDrop == true)
-            { 
-                isBombing = true;
+        switch (direction)
+        {
+            case MoveDirection.UP:
+            {
+                
+                isWalkingUp = true;
+                yield return new WaitForSeconds(walkTime);
+                isWalkingDown = false;
+                isWalkingLeft = false;
+                isWalkingRight = false;
+
+                if (CanDrop == true)
+                { 
+                    isBombing = true;
+                }
+                break;
+            }
+
+            case MoveDirection.DOWN:
+            {
+                
+                isWalkingDown = true;
+                yield return new WaitForSeconds(walkTime);
+                isWalkingUp = false;
+                isWalkingLeft = false;
+                isWalkingRight = false;
+                if (CanDrop == true)
+                { 
+                    isBombing = true;
+                }
+                break;
+            }
+
+            case MoveDirection.LEFT:
+            {
+                isWalkingLeft = true;
+                yield return new WaitForSeconds(walkTime);
+                isWalkingDown = false;
+                isWalkingUp = false;
+                isWalkingRight = false;
+                if (CanDrop == true)
+                { 
+                    isBombing = true;
+                }
+
+                break;
+            }
+
+            case MoveDirection.RIGHT:
+            {
+                isWalkingRight = true;
+                yield return new WaitForSeconds(walkTime);
+                isWalkingDown = false;
+                isWalkingLeft = false;
+                isWalkingUp = false;
+                if (CanDrop == true)
+                { 
+                    isBombing = true;
+                }
+
+                break;
             }
             
         }
-        if (walkDirection == 2)
-        {
-            isWalkingDown = true;
-            yield return new WaitForSeconds(walkTime);
-            isWalkingUp = false;
-            isWalkingLeft = false;
-            isWalkingRight = false;
-            if (CanDrop == true)
-            { 
-                isBombing = true;
-            }
-        }
-        if (walkDirection == 3)
-        {
-            isWalkingLeft = true;
-            yield return new WaitForSeconds(walkTime);
-            isWalkingDown = false;
-            isWalkingUp = false;
-            isWalkingRight = false;
-            if (CanDrop == true)
-            { 
-                isBombing = true;
-            }
-        }
-        if (walkDirection == 4)
-        {
-            isWalkingRight = true;
-            yield return new WaitForSeconds(walkTime);
-            isWalkingDown = false;
-            isWalkingLeft = false;
-            isWalkingUp = false;
-            if (CanDrop == true)
-            { 
-                isBombing = true;
-            }
-        }
         isWandering = false;
     }
+    
+}
+public enum MoveDirection
+{
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN
 }

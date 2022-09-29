@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject IARandom;
     public bool IsPause;
+    public EnemyBehaviour EnemyBehaviour;
+    public GameState GameState = GameState.MENU;
     private void Awake()
     {
         if (Instance != null)
@@ -34,10 +36,12 @@ public class GameManager : MonoBehaviour
 
         if (state)
         {
+            GameState = GameState.PAUSE;
             Time.timeScale = 0;
         }
         else
         {
+            GameState = GameState.RUNNING;
             Time.timeScale = 1;
         }
         PauseMenu.SetActive(state);
@@ -69,7 +73,15 @@ public class GameManager : MonoBehaviour
 
 }
 
-public enum ENEMY_BEHAVIOUR
+public enum GameState{
+    MENU,
+    RUNNING,
+    PAUSE
+}
+
+public enum EnemyBehaviour
 {
-    
+    PLAYER,
+    RANDOM,
+    MCTS
 }
