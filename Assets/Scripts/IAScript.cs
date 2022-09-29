@@ -52,6 +52,7 @@ public class IAScript : MonoBehaviour
         {
             Instantiate(bombPrefab, MapGenerator.Instance.groundGrid[(int)(transform.position.x + 0.5f), (int)(transform.position.z + 0.5f)].attachedGameObject.transform.GetChild(0));
             isBombing = false;
+            CanDrop = false;
         }
         
     }
@@ -63,9 +64,9 @@ public class IAScript : MonoBehaviour
         
 
         int bombwait = Random.Range(1, 5);
-        int bombDrop = Random.Range(1, 10);
+        int bombDrop = Random.Range(5, 100);
 
-        if (bombDrop == 5)
+        if (bombDrop <= 5)
         {
             CanDrop = true;
         } 
