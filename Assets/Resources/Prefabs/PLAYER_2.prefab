@@ -94,7 +94,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337215176488311522}
   serializedVersion: 2
+<<<<<<< Updated upstream
   m_Mass: 1
+=======
+  m_Mass: 200
+>>>>>>> Stashed changes
   m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -130,6 +134,7 @@ MonoBehaviour:
   playerType: 1
   bombPrefab: {fileID: 7910145201009191472, guid: ef55fa84639979e4481aca8e0a289b26, type: 3}
   _movementMultiplier: 10
+<<<<<<< Updated upstream
 --- !u!114 &3499049791716326939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,3 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   bombPrefab: {fileID: 7910145201009191472, guid: ef55fa84639979e4481aca8e0a289b26, type: 3}
+=======
+>>>>>>> Stashed changes

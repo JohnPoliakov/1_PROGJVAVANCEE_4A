@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: "R\xE9sumer"
     m_Metadata:
       m_Items: []
+  - m_Id: 1043688247410688
+    m_Localized: "R\xE9solution"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

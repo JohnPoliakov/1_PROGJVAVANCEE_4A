@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject PauseMenu;
     [SerializeField]
-    GameObject canvas;
+    public GameObject canvas;
     [SerializeField]
     GameObject player_1;
     [SerializeField]
@@ -15,6 +18,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject IARandom;
     public bool IsPause;
+
+    [SerializeField] 
+    private TMP_Dropdown TypeGame;
+    
+    public TMP_Dropdown ResolutionDropdown;
+    private Resolution[] resolutions;
+    
     private void Awake()
     {
         if (Instance != null)
@@ -26,6 +36,27 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        
+        resolutions = Screen.resolutions;
+        ResolutionDropdown.ClearOptions();
+        
+        List<string> options = new List<string>();
+
+        int currentResolutionIndex = 0;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            {
+                currentResolutionIndex = i;
+            }
+        }   
+        ResolutionDropdown.AddOptions(options);
+        ResolutionDropdown.value = currentResolutionIndex;
+        ResolutionDropdown.RefreshShownValue();
     }
 
     public void SetPause(bool state)
@@ -43,19 +74,24 @@ public class GameManager : MonoBehaviour
         PauseMenu.SetActive(state);
     }
 
+    
+    
     public void StartGame()
     {
         MapGenerator.Instance.GeneratedMap();
+        
+        LaunchTypeGame();
 
         Camera.main.transform.position = new Vector3(MapGenerator.Instance.size.x / 2, MapGenerator.Instance.size.x, 0);
-        
-        SpawnPlayers();
+
         
         canvas.SetActive(false);
+        
     }
 
     void SpawnPlayers()
     {
+        Debug.Log("spawn player");
         GameObject player = Instantiate(player_1, new Vector3(MapGenerator.Instance.spawns[0].x, 0, MapGenerator.Instance.spawns[0].y),
             Quaternion.identity);
         
@@ -67,9 +103,29 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerController>().SetInputController(GetComponent<InputController>());
     }
 
+    private void LaunchTypeGame()
+    {
+        if (TypeGame.value == 0)
+        {
+            Debug.Log("bcsiludvbsd");
+            SpawnPlayers();
+        }
+        else
+        {
+            Debug.Log("Come Soon");
+        }
+        
+    }
+    
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
 }
 
 public enum ENEMY_BEHAVIOUR
 {
-    
+     _n
 }
