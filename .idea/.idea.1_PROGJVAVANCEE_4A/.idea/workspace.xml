@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d33c7f38-e3cc-467d-a334-b9145965c721" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.1_PROGJVAVANCEE_4A/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.1_PROGJVAVANCEE_4A/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Localization/GLOBAL Shared Data.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Localization/GLOBAL Shared Data.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MENU.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MENU.unity" afterDir="false" />
@@ -10,6 +11,18 @@
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Grinched 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Grinched 2.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VisualScriptingSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/InputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/Maps/MAP_PATTERN_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/Maps/MAP_PATTERN_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/Maps/MAP_PATTERN_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/Maps/MAP_PATTERN_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MENU.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MENU.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MCTS.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MCTS.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MCTS_algo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MCTS_algo.cs" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
@@ -86,8 +99,13 @@
       <workItem from="1664352058035" duration="9000" />
       <workItem from="1664354838099" duration="618000" />
       <workItem from="1664355774815" duration="5456000" />
+<<<<<<< Updated upstream
       <workItem from="1664439252436" duration="14638000" />
       <workItem from="1664539914658" duration="2630000" />
+=======
+      <workItem from="1664439252436" duration="20130000" />
+      <workItem from="1664538688305" duration="1258000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

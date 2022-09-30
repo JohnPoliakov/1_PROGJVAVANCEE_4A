@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class MCTS_Algo
 {
-    private int MAX_SIMULATION = 20;
-    private float TICK_RATE = 0.02f;
+    private int MAX_SIMULATION = 500;
+    private float TICK_RATE = 0.01f;
     private List<Bomb> BombsList = new ();
     private GameState GameState = GameState.RUNNING;
     private MapGenerator.CubeData[,] grid;
     private MapGenerator.CubeData[,] gridTemp;
+
+    public static bool check;
 
     public Action ActionToPlay;
     
@@ -27,15 +30,22 @@ public class MCTS_Algo
             position = positionIA,
             actions = new List<ActionType>()
             {
-                ActionType.MOVE_UP,
-                ActionType.MOVE_DOWN,
-                ActionType.MOVE_LEFT,
-                ActionType.MOVE_RIGHT,
                 ActionType.BOMB
             },
             grid = gridTemp
         };
-
+        
+        State statePlayer = new State()
+        {
+            position = positionPlayer,
+            actions = new List<ActionType>()
+            {
+                ActionType.BOMB
+            },
+            grid = gridTemp
+        };
+        
+        statePlayer.FilterActions();
         stateIA.FilterActions();
 
         foreach (var actionType in stateIA.actions)
@@ -49,21 +59,6 @@ public class MCTS_Algo
                 Debug.Log("SIMULATION : "+i);
              
                 gridTemp = grid;
-                
-                State statePlayer = new State()
-                {
-                    position = positionPlayer,
-                    actions = new List<ActionType>()
-                    {
-                        ActionType.MOVE_UP,
-                        ActionType.MOVE_DOWN,
-                        ActionType.MOVE_LEFT,
-                        ActionType.MOVE_RIGHT,
-                        ActionType.BOMB
-                    },
-                    grid = gridTemp
-                };
-                statePlayer.FilterActions();
 
                 int rlt = Simulate(action, stateIA, statePlayer);
 
@@ -71,22 +66,6 @@ public class MCTS_Algo
                 
                 winNumber += rlt;
                 action.AddValue(winNumber);
-                
-                stateIA = new State()
-                {
-                    position = stateIA.position,
-                    actions = new List<ActionType>()
-                    {
-                        ActionType.MOVE_UP,
-                        ActionType.MOVE_DOWN,
-                        ActionType.MOVE_LEFT,
-                        ActionType.MOVE_RIGHT,
-                        ActionType.BOMB
-                    },
-                    grid = gridTemp
-                };
-
-                stateIA.FilterActions();
             }
 
             if (max < action.GetValue())
@@ -95,7 +74,7 @@ public class MCTS_Algo
                 ActionToPlay = action;
             }
 
-            Debug.Log("NEED TO PLAY : " +action.GetActionType());
+            Debug.Log("NEED TO PLAY : " +ActionToPlay.GetActionType());
 
         }
 
@@ -103,50 +82,48 @@ public class MCTS_Algo
     }
     int Simulate(Action action, State stateIA, State statePlayer)
     {
-
+        BombsList = new();
         int status = -1;
 
         int limit = 0;
         Debug.Log("SIMULATE");
         
-        while (status == -1 && limit <= 10000)
+        while (status == -1 && limit <= 100000)
         {
 
             limit++;
             
             status = HandleBombs(stateIA, statePlayer);
-            PlayAction(action, stateIA);
-            PlayerMove(statePlayer);
-            Update(stateIA, statePlayer);
+            PlayAction(action, ref stateIA);
+            PlayerMove(ref statePlayer);
+            Update(ref stateIA, ref statePlayer);
+            stateIA.RandomAction();
+            action = new Action(stateIA.selectedAction);
         }
         
-        if(limit >= 10000)
+        if(limit >= 100000)
             Debug.Log("ENDLESS LOOP");
         
         
         return status;
     }
 
-    void PlayerMove(State state)
+    void PlayerMove(ref State state)
     {
-        state.selectedAction = state.actions[Random.Range(0, state.actions.Count)];
+        state.RandomAction();
     }
     
-    void PlayAction(Action action, State state)
+    void PlayAction(Action action, ref State state)
     {
         state.selectedAction = action.GetActionType();
     }
     
-    void Update(State IA, State Player)
+    void Update(ref State IA, ref State Player)
     {
 
-        Debug.Log("UPDATE");
-        
         switch (IA.selectedAction)
         {
             case ActionType.BOMB:
-
-                Debug.Log("PLACE BOMB");
                 BombsList.Add(new Bomb((int)IA.position.x, (int)IA.position.z));
                 break;
             case ActionType.MOVE_LEFT:
@@ -188,7 +165,6 @@ public class MCTS_Algo
 
     int HandleBombs(State IA, State Player)
     {
-        Debug.Log("HANDLE BOMBS : "+BombsList.Count);
         
         List<Bomb> garbage = new List<Bomb>();
         List<MapGenerator.CubeData> explosions = new ();
@@ -196,8 +172,6 @@ public class MCTS_Algo
         foreach (var bomb in BombsList)
         {
 
-            Debug.Log("CHECK BOMB");
-            
             bomb.timer -= TICK_RATE;
             if (bomb.timer <= 0)
             {
@@ -226,7 +200,6 @@ public class MCTS_Algo
                 }
             }
 
-            Debug.Log(explosions.Count);
         }
 
         
@@ -238,8 +211,6 @@ public class MCTS_Algo
 
         foreach (var data in explosions)
         {
-            Debug.Log("EXPLOSION");
-            
             if ((int)IA.position.x == data.x && (int)IA.position.z == data.y)
                 return 0;
             if ((int)Player.position.x == data.x && (int)Player.position.z == data.y)
@@ -254,6 +225,15 @@ public class MCTS_Algo
         int xCoord = origin.x + neighbour.x;
         int yCoord = origin.y + neighbour.y;
 
+        if (xCoord < 0 || xCoord >= MapGenerator.Instance.size.x || yCoord < 0 ||
+            yCoord >= MapGenerator.Instance.size.y)
+        {
+            direction = false;
+            return false;
+        }
+            
+        
+        
         if (gridTemp[xCoord, yCoord].type == 1)
         {
             gridTemp[xCoord, yCoord].type = 0;
@@ -297,14 +277,15 @@ struct State
     {
         actions = new List<ActionType>()
         {
-            ActionType.BOMB,
-            ActionType.MOVE_LEFT,
-            ActionType.MOVE_RIGHT,
-            ActionType.MOVE_DOWN,
-            ActionType.MOVE_UP
+            ActionType.BOMB
         };
         
         FilterActions();
+    }
+
+    public void RandomAction()
+    {
+        selectedAction = actions[Random.Range(0, actions.Count)];
     }
     
     public void FilterActions()
@@ -321,42 +302,49 @@ struct State
         {
             
             MapGenerator.CubeData neighbour = grid[x + LEFT.x, z + LEFT.y];
-            if (neighbour.type != 0)
+            if (neighbour.type == 0)
             {
-                actions.Remove(ActionType.MOVE_LEFT);
+                actions.Add(ActionType.MOVE_LEFT);
             }
-        }else
-            actions.Remove(ActionType.MOVE_LEFT);
+        }
             
         if (x + RIGHT.x >= 0 && x + RIGHT.x < MapGenerator.Instance.size.x && z + RIGHT.y >= 0 && z + RIGHT.y < MapGenerator.Instance.size.y)
         {
             MapGenerator.CubeData neighbour = grid[x + RIGHT.x, z + RIGHT.y];
             if (neighbour.type != 0)
             {
-                actions.Remove(ActionType.MOVE_RIGHT);
+                actions.Add(ActionType.MOVE_RIGHT);
             }
-        }else
-            actions.Remove(ActionType.MOVE_RIGHT);
+        }
             
         if (x + UP.x >= 0 && x + UP.x < MapGenerator.Instance.size.x && z + UP.y >= 0 && z + UP.y < MapGenerator.Instance.size.y)
         {
             MapGenerator.CubeData neighbour = grid[x + UP.x, z + UP.y];
             if (neighbour.type != 0)
             {
-                actions.Remove(ActionType.MOVE_UP);
+                actions.Add(ActionType.MOVE_UP);
             }
-        }else
-            actions.Remove(ActionType.MOVE_UP);
-            
+        }
+
         if (x + DOWN.x >= 0 && x + DOWN.x < MapGenerator.Instance.size.x && z + DOWN.y >= 0 && z + DOWN.y < MapGenerator.Instance.size.y)
         {
             MapGenerator.CubeData neighbour = grid[x + DOWN.x, z + DOWN.y];
             if (neighbour.type != 0)
             {
-                actions.Remove(ActionType.MOVE_DOWN);
+                actions.Add(ActionType.MOVE_DOWN);
             }
-        }else
-            actions.Remove(ActionType.MOVE_DOWN);
+        }
+
+        if (MCTS_Algo.check)
+        {
+            foreach (var VARIABLE in actions)
+            {
+                Debug.Log(VARIABLE);
+            }
+
+            MCTS_Algo.check = true;
+        }
+        
 
     }
 }
