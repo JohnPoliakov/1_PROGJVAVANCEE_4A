@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\InputController.cs" />
+     <Compile Include="Assets\Scripts\MonteCarlo.cs" />
      <Compile Include="Assets\Scripts\BombScript.cs" />
      <Compile Include="Assets\InputActions.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />

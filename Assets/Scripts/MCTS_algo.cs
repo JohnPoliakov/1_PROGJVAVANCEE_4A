@@ -88,7 +88,7 @@ public class MCTS_Algo
         int limit = 0;
         Debug.Log("SIMULATE");
         
-        while (status == -1 && limit <= 100000)
+        while (status == -1 && limit <= 10000)
         {
 
             limit++;
@@ -101,7 +101,7 @@ public class MCTS_Algo
             action = new Action(stateIA.selectedAction);
         }
         
-        if(limit >= 100000)
+        if(limit >= 10000)
             Debug.Log("ENDLESS LOOP");
         
         
@@ -290,8 +290,8 @@ struct State
     
     public void FilterActions()
     {
-        int x = (int)position.x;
-        int z = (int)position.z;
+        int x = (int)(position.x - 0.5f);
+        int z = (int)(position.z- 0.5f);
 
         Vector2Int LEFT = new Vector2Int(-1, 0);
         Vector2Int RIGHT = new Vector2Int(1, 0);
@@ -376,11 +376,3 @@ public class Action
     }
 }
 
-public enum ActionType
-{
-    MOVE_UP,
-    MOVE_DOWN,
-    MOVE_LEFT,
-    MOVE_RIGHT,
-    BOMB
-}
