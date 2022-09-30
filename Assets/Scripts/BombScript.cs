@@ -6,6 +6,7 @@ using UnityEngine.Assertions;
 
 public class BombScript : MonoBehaviour
 {
+    
     private MapGenerator.CubeData[,] dataTileMap;
     public List<GameObject> IngredientsSpreadList;
     private List<GameObject> IngredientsExplosion;
@@ -37,15 +38,16 @@ public class BombScript : MonoBehaviour
     {
         currentPosition = transform.position;
         
-        dataTileMap = MapGenerator.Instance.data;
+        dataTileMap = MapGenerator.Instance.data;//récuperation tableau qui stocke les murs
 
-        dataGroundMap = MapGenerator.Instance.groundGrid;
+        dataGroundMap = MapGenerator.Instance.groundGrid;//récuperation tableau qui stocke le sol
         
         
     }
 
     private void Explode()
     {
+        // bool pour savoir s'il faut continuer a propager le souffle de la bombe
         bool rightBool = true;
         bool leftBool = true;
         bool upBool = true;
@@ -54,33 +56,36 @@ public class BombScript : MonoBehaviour
         
         IngredientsExplosion = new List<GameObject>();
 
-
+        //recuperation des joueurs
         player1 = GameObject.FindWithTag("Player_1");
         player2 = GameObject.FindWithTag("Player_2");
-        
+
+        //variables correspondant aux coordonnées des 2 joueurs au moment de l'explosion
         xCoordPlayer1 = (int) (player1.transform.position.x + 0.5f);
         yCoordPlayer1 = (int) (player1.transform.position.z + 0.5f);
         xCoordPlayer2 = (int) (player2.transform.position.x + 0.5f);
         yCoordPlayer2 = (int) (player2.transform.position.z + 0.5f);
         
+        //coordonnées de la bombe
         int xCoord = (int)(transform.position.x + 0.5f);
         int yCoord = (int)(transform.position.z + 0.5f);
         
+        //si le joueur 1 a les memes coordonnées que la bombe alors on éxecute le script de fin de partie
         if (xCoordPlayer1 == xCoord && yCoordPlayer1 == yCoord)
         {
-            Debug.Log("jhcbsuvebwsd");
             EndGame();
         }
-
+        
+        //si le joueur 2 a les memes coordonnées que la bombe alors on éxecute le script de fin de partie
         if (xCoordPlayer2 == xCoord && yCoordPlayer2 == yCoord)
         {
-            Debug.Log("jhcbsuvebwsd");
             EndGame();
 
-            IngredientsExplosion = new List<GameObject>();
+            IngredientsExplosion = new List<GameObject>();//liste des ingredients qui represente la portée de la bombe
 
         }
 
+        //boucle qui va s'effectuer pour chaque direction selon le radius 
         for (int i = 1; i <= radiusExplosion; i++)
         {
             
