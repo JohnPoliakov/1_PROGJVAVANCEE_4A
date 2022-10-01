@@ -23,11 +23,9 @@ public class MCTS : MonoBehaviour
 
         lastDecision = Time.time + cooldown; 
         
-        MCTS_Algo mcts = new MCTS_Algo(MapGenerator.Instance.data);
-        
-        mcts.Compute(GameObject.FindWithTag("Player_1").transform.position, transform.position);
+        MonteCarlo mcts = new MonteCarlo(MapGenerator.Instance.data);
 
-        switch (mcts.ActionToPlay.GetActionType())
+        switch (mcts.Compute(GameObject.FindWithTag("Player_1").transform.position, transform.position))
         {
             case ActionType.BOMB:
             {

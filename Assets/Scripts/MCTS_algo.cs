@@ -1,6 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
+
+/*
+ *
+ *
+ * 1ère tentative sans arbre: CRASH !!!
+ *
+ * 
+ */
 
 public class MCTS_Algo
 {
@@ -252,7 +259,7 @@ public class MCTS_Algo
     }
 }
 
-class Bomb
+public class Bomb
 {
     public int x;
     public int z;
